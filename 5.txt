@@ -1,0 +1,44 @@
+Run this code with python3, to install and run use the following commands:
+pip3 install -r requirements.txt
+
+python3 sqlConnection.py --If you want to create a sqlite DB and the related [user] table
+python3 feedSQLDatabase.py --If you want to feed the DB with random data, later on used by the Producer process
+
+python3 kafkaProducer.py --If you want to start the producer
+python3 kafkaConsumer.py --If you want to start the consumer
+
+
+Installation Note:
+
+$ sudo apt-get install default-jre
+
+$ sudo useradd -m kafka
+
+$ sudo adduser kafka sudo
+
+$ sudo apt-get install zookeeperd
+
+$ sudo netstat -nlpt | grep ':2181'
+
+$ sudo bin/zkServer.sh start
+
+$ mkdir -p ~/kafka
+$ cd kafka
+
+$ wget http://www-us.apache.org/dist/kafka/0.10.2.0/kafka_2.10-0.10.2.0.tgz
+
+$ tar xvzf kafka_2.10-0.10.2.0.tgz --strip 1
+
+$ ~/kafka/bin/kafka-server-start.sh ~/kafka/config/server.properties
+
+$ netstat -nlpt
+
+$ jps
+
+$ sudo /usr/share/zookeeper/bin/zkServer.sh stop
+
+$ ~/kafka/bin/zookeeper-server-start.sh ~/kafka/config/zookeeper.properties
+
+$ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1  --partitions 1 --topic virtual-mind
+
+$ bin/kafka-topics.sh --list --zookeeper localhost:2181
